@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorpresa</title>
+  <style>
+    body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #fce4ec, #f8bbd0);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    /* Contenedor del reproductor para centrarlo */
+    .audio-container {
+      margin-top: 20px;
+    }
+
+    audio {
+      width: 300px;
+      outline: none;
+    }
+
+    .palabras {
+      background: white;
+      padding: 1rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(143, 46, 130, 0.452);
+      text-align: center;
+      max-width: 850px;
+      transition: all 0.3s ease;
+      margin-top: 80px;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(143, 46, 130, 0.452);
+      text-align: center;
+      max-width: 400px;
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      color: #c2185b;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      background: linear-gradient(to right, #eb5a8a, #a99ba0);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background: #c2185b;
+    }
+
+    .mensaje {
+      margin-top: 20px;
+      color: #6a1b9a;
+      font-size: 1.1rem;
+    }
+
+    /* Imagen final que se muestra después del texto */
+    .final-image {
+      margin-top: 20px;
+      max-width: 320px;
+      width: 90%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .ticket {
+      background: #fff3f6;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Contenedor para centrar y dar espacio al reproductor -->
+  <div class="audio-container">
+    <audio id="bg-audio" controls loop>
+      <source src="Billie Eilish - WILDFLOWER (Official Instrumental).mp3" type="audio/mp3" />
+    </audio>
+  </div>
+
+  <!-- Bloque de texto empujado hacia abajo con margin-top -->
+  <div class="palabras" id="palabras">
+    <p>
+Holaaa Danna, feliz cumpleaños, otro año más de vida jeje 21 añitos ya jsjs.
+Espero que hoy la pases genial al lado de tus seres queridos y, sobre todo, que te diviertas mucho.
+Ya sabes cuanto te aprecio como persona. Eres una gran chica, buena hija, eres buena con tus amigos y más que nada con tus hermanos jeje, pero bueno nunca cambies, y siempre mantén esa convicción que veo en ti.
+En este nuevo año deseo que consigas todo lo que te propongas. No hace falta tener todo resuelto desde el inicio, lo importante es dar pasos constantes, aunque sean pequeños.
+Cree en ti, planta hábitos que te acerquen a tus metas y no te castigues por equivocarte; los errores enseñan y te hacen más fuerte. Celebra las victorias pequeñas porque al final son las que construyen lo grande.
+Si alguna vez te sientes perdida o con dudas, recuerda todo lo que ya has logrado y úsalo como prueba de que puedes. Ponte metas claras, haz un plan sencillo y ve sumando día a día.
+Disfruta mucho hoy, sopla las velas con ganas y pide un deseo grande. Te mereces lo mejor, muchos éxitos y sé feliz, ya te daré tu regalo cuando coincidamos jeje, disfruta hoy.
+    </p>
+  </div>
+
+  <!-- Imagen única que debe mostrarse al final del texto -->
+  <img class="final-image" src="29037c4c682f970083013d55933d8727.jpg" alt="29037c4c682f970083013d55933d8727" />
+
+  <script>
+    // Intentar reproducir el audio con volumen apenas haya un clic, por políticas de Autoplay
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('bg-audio');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(_ => {
+          document.addEventListener('click', () => {
+            audio.muted = false;
+            audio.play().catch(() => {});
+          }, { once: true });
+        });
+      }
+    });
+
+    // He quitado código y variables que referenciaban elementos inexistentes
+    // (declaración, ticket, mensaje) para evitar errores en consola.
+  </script>
+</body>
+</html>
